@@ -1,0 +1,10 @@
+﻿    {% extends 'world/base.html' %}
+
+    {% block content %}
+        {% for suit in suits %}
+            <div class="suit">
+   		<h1><a href="{% url 'suit_detail' pk=suit.pk %}">{{ suit.name }}</a></h1>               
+		 <p>{{ suit.details|linebreaks }}</p>
+            </div>
+        {% endfor %}
+    {% endblock content %}

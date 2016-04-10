@@ -1,0 +1,15 @@
+    {% extends 'world/base.html' %}
+
+    {% block content %}
+        <div class="suit">
+            <h1>{{ suit.name }}</h1>
+            <p>{{ suit.details|linebreaks }}</p>
+            <p>{{ suit.vendor_code|linebreaks }}</p>
+            <p>{{ suit.year_issue|linebreaks }}</p>
+            <p>{{ suit.colour|linebreaks }}</p>
+            <p>{{ suit.rent_price|linebreaks }}</p>
+            <p>{{ suit.item_price|linebreaks }}</p>
+            <p>{{ suit.note|linebreaks }}</p>
+            <p>{{ suit.branch|linebreaks }}</p>
+        </div>
+    {% endblock %}
