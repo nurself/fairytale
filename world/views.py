@@ -24,3 +24,15 @@ def suit_new(request):
         form = SuitForm()
     return render(request, 'world/suit_edit.html', {'form': form})
 
+
+def suit_edit(request, pk):
+    suit = get_object_or_404(Suit, pk=pk)
+    if request.method == "POST":
+        form = SuitForm(request.POST, instance=suit)
+        if form.is_valid():
+            suit = form.save(commit=False)
+            suit.save()
+            return redirect('world.views.suit_detail', pk=suit.pk)
+    else:
+        form = SuitForm(instance=suit)
+    return render(request, 'world/suit_edit.html', {'form': form})

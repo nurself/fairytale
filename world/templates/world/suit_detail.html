@@ -2,6 +2,7 @@
 
     {% block content %}
         <div class="suit">
+    <a class="btn btn-default" href="{% url 'suit_edit' pk=suit.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
             <h1>{{ suit.name }}</h1>
             <p>{{ suit.details|linebreaks }}</p>
             <p>{{ suit.vendor_code|linebreaks }}</p>
