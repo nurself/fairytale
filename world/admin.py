@@ -6,6 +6,11 @@ from .models import SuitToRent
 from .models import SuitToSize
 from .models import People
 
+class PeopleAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None, {'fields': ['name', 'passport_data', 'address', 'phone']}),
+    ]
+    search_fields = ['name']
 
 class SuitToSizeInline(admin.StackedInline):
     model = SuitToSize
@@ -41,4 +46,4 @@ class SuitToRentAdmin(admin.ModelAdmin):
 admin.site.register(Suit, SuitAdmin)
 admin.site.register(Branch)
 admin.site.register(SuitToRent, SuitToRentAdmin)
-admin.site.register(People)
+admin.site.register(People, PeopleAdmin)

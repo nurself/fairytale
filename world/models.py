@@ -62,7 +62,7 @@ class SuitToSize(models.Model):
         verbose_name_plural = 'Размеры'
 
     def __str__(self):
-        return self.suit.name
+        return self.suit.name + u", размер: " + str(self.size)
 
 
 class SuitToRent(models.Model):
