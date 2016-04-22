@@ -1,6 +1,8 @@
 # _*_ coding: utf-8
 from django.db import models
 from django.utils import timezone
+import datetime
+import pytz
 
 class Branch(models.Model):
     name = models.CharField(unique=True, max_length=50, verbose_name=u"Наименование")
@@ -16,7 +18,7 @@ class Branch(models.Model):
 
 class People(models.Model):
     name = models.CharField(unique=True, max_length=100, verbose_name=u"ФИО")
-    passport_data = models.CharField(max_length=50, verbose_name=u"Паспортные данные")
+    passport_data = models.CharField(max_length=50, null=True, blank=True, verbose_name=u"Паспортные данные")
     address = models.CharField(max_length=100, verbose_name=u"Адрес проживания")
     phone = models.CharField(max_length=50, verbose_name=u"Телефон")
 
@@ -78,7 +80,9 @@ class SuitToRent(models.Model):
     is_returned = models.NullBooleanField(null=True, blank=True,verbose_name=u"Возвращено?")
 
     def item_status_return(self):
-        return self.end_date > timezone.now().date() or self.is_returned
+        utc = pytz.UTC
+        dateb = utc.localize(datetime.datetime.strptime(self.end_date.__str__(), '%Y-%m-%d'))
+        return dateb > timezone.now() or self.is_returned
 
     item_status_return.admin_order_field = 'published_date'
     item_status_return.boolean = True
