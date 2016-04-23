@@ -4,6 +4,17 @@ from django.utils import timezone
 import datetime
 import pytz
 
+
+class SuitType(models.Model):
+    name = models.CharField(unique=True, max_length=50, verbose_name=u"Наименование")
+
+    class Meta:
+        verbose_name = u'Отдел'
+        verbose_name_plural = u'Отделы'
+
+    def __str__(self):
+        return self.name
+
 class Branch(models.Model):
     name = models.CharField(unique=True, max_length=50, verbose_name=u"Наименование")
     address = models.CharField(max_length=50, verbose_name=u"Адрес")
@@ -29,6 +40,7 @@ class People(models.Model):
     def __str__(self):
         return self.name
 
+
 class Suit(models.Model):
     name = models.CharField(unique=True, max_length=100, verbose_name=u"Наименование")
     picture = models.ImageField(upload_to='images', null=True, blank=True, verbose_name=u"Картинка")
@@ -40,6 +52,13 @@ class Suit(models.Model):
     item_price = models.IntegerField(verbose_name=u"Сумма имущества")
     note = models.CharField(max_length=50, null=True, blank=True, verbose_name=u"Примечание")
     branch = models.ForeignKey(Branch, verbose_name=u"Филиал")
+    type = models.ForeignKey(SuitType, null=True, blank=True, verbose_name=u"Отдел")
+
+    def admin_image(self):
+        return '<img src="%s" width="100" height="100"/>' % self.picture.url
+
+    admin_image.allow_tags = True
+    admin_image.short_description = u"Картинка"
 
     class Meta:
         verbose_name = u'Инвентарь'
@@ -62,6 +81,7 @@ class SuitToSize(models.Model):
     class Meta:
         verbose_name = u'Размер'
         verbose_name_plural = u'Размеры инвентарей'
+        unique_together = ('suit', 'size',)
 
     def __str__(self):
         return self.suit.name + u", размер: " + str(self.size)
@@ -74,15 +94,16 @@ class SuitToRent(models.Model):
     start_date = models.DateField(default=timezone.now, verbose_name=u"Дата начала проката")
     end_date = models.DateField(default=timezone.now, verbose_name=u"Дата конца проката")
     people = models.ForeignKey(People, verbose_name=u"Наниматель")
+    reserve_sum = models.IntegerField(null=True, blank=True, verbose_name=u"Сумма при брони")
     total_price = models.IntegerField(verbose_name=u"Общая сумма")
     user = models.ForeignKey('auth.User', verbose_name=u"Наймодатель")
     published_date = models.DateTimeField(default=timezone.now, verbose_name=u"Дата записи")
-    is_returned = models.NullBooleanField(null=True, blank=True,verbose_name=u"Возвращено?")
+    is_returned = models.NullBooleanField(null=True, blank=True, verbose_name=u"Возвращено?")
 
     def item_status_return(self):
         utc = pytz.UTC
-        dateb = utc.localize(datetime.datetime.strptime(self.end_date.__str__(), '%Y-%m-%d'))
-        return dateb > timezone.now() or self.is_returned
+        enddate = utc.localize(datetime.datetime.strptime(self.end_date.__str__(), '%Y-%m-%d'))
+        return enddate > timezone.now() or self.is_returned
 
     item_status_return.admin_order_field = 'published_date'
     item_status_return.boolean = True

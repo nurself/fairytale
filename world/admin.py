@@ -5,6 +5,7 @@ from .models import Branch
 from .models import SuitToRent
 from .models import SuitToSize
 from .models import People
+from .models import SuitType
 from easy_select2 import select2_modelform
 from django.utils import timezone
 from django.contrib.admin.views.main import ChangeList
@@ -55,14 +56,15 @@ class SuitAdmin(admin.ModelAdmin):
     ]
     inlines = [SuitToSizeInline]
     search_fields = ['name']
-    list_display = ['name', 'vendor_code', 'year_issue', 'details', 'colour', 'rent_price', 'item_price', 'note', ]
-    list_filter = ['branch']
+    list_display = ['name', 'vendor_code', 'admin_image', 'year_issue', 'details', 'colour', 'rent_price', 'item_price', 'note', ]
+    list_filter = ['branch','type',]
+    list_per_page = 5
 
 class SuitToRentAdmin(admin.ModelAdmin):
     form = select2_modelform(SuitToRent)
     fieldsets = [
         (None, {'fields': ['protocol_num']}),
-        (u'Информация', {'fields': ['suit_to_size', 'count', 'start_date', 'end_date', 'people', 'total_price', 'is_returned']}),
+        (u'Информация', {'fields': ['suit_to_size', 'count', 'start_date', 'end_date', 'people', 'reserve_sum', 'total_price', 'is_returned']}),
     ]
     list_filter = ['published_date']
     search_fields = ['protocol_num']
@@ -84,9 +86,11 @@ class SuitToRentAdmin(admin.ModelAdmin):
         """Override the default changelist"""
         return TotalChangeList
 
-    list_display = ('protocol_num', 'suit_to_size', 'people_link', 'start_date', 'end_date', 'total_price', 'item_status_return')
+    list_display = ('protocol_num', 'suit_to_size', 'people_link', 'start_date', 'end_date', 'reserve_sum', 'total_price', 'item_status_return')
+    list_per_page = 5
 
 admin.site.register(Suit, SuitAdmin)
 admin.site.register(Branch)
+admin.site.register(SuitType)
 admin.site.register(SuitToRent, SuitToRentAdmin)
 admin.site.register(People, PeopleAdmin)
