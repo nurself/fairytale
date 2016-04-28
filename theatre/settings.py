@@ -108,3 +108,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+AUTHENTICATION_BACKENDS = (
+    'theatre.auth_backends.CustomUserModelBackend',
+)
+
+CUSTOM_USER_MODEL = 'world.MyUser'
+AUTH_USER_MODEL = 'world.MyUser'
