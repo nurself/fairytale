@@ -57,6 +57,31 @@ class SuitToSizeInline(admin.StackedInline):
     extra = 1
     form = AlwaysChangedModelForm
 
+class SuitListFilter(admin.SimpleListFilter):
+    title = (u"Филиалы")
+
+    parameter_name = 'branch'
+
+    def lookups(self, request, model_admin):
+        branches = Branch.objects.all();
+        if request.user.is_admin:
+            return (
+                (branch.pk,branch.name) for branch in branches
+                )
+        else:
+            return (
+            (request.user.branch.pk, (request.user.branch.name)),
+            )
+
+    def queryset(self, request, queryset):
+        if request.user.is_admin:
+            if not self.value():
+                return Suit.objects.all()
+            else:
+                return Suit.objects.filter(branch=self.value())
+        else:
+            return Suit.objects.filter(branch=request.user.branch)
+
 
 class SuitAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -68,23 +93,22 @@ class SuitAdmin(admin.ModelAdmin):
     inlines = [SuitToSizeInline]
     search_fields = ['name']
     list_display = ['name', 'vendor_code', 'admin_image', 'year_issue', 'details', 'colour', 'rent_price', 'item_price', 'note', ]
-    list_filter = ['branch','type',]
+    list_filter = [SuitListFilter,'type',]
     list_per_page = 10
+
+    def render_change_form(self, request, context, *args, **kwargs):
+        if request.user.is_admin:
+            context['adminform'].form.fields['branch'].queryset = Branch.objects.all()
+        else:
+            context['adminform'].form.fields['branch'].queryset = Branch.objects.filter(pk=request.user.branch.pk)
+        return super(SuitAdmin, self).render_change_form(request, context, args, kwargs)
 
 class SuitToRentListFilter(admin.SimpleListFilter):
     title = (u"Пользователи")
 
-    # Parameter for the filter that will be used in the URL query.
     parameter_name = 'authorization'
 
     def lookups(self, request, model_admin):
-        """
-        Returns a list of tuples. The first element in each
-        tuple is the coded value for the option that will
-        appear in the URL query. The second element is the
-        human-readable name for the option that will appear
-        in the right sidebar.
-        """
         users = MyUser.objects.all();
         if request.user.is_admin:
             return (
@@ -125,6 +149,10 @@ class SuitToRentAdmin(admin.ModelAdmin):
                % (obj.people.pk, obj.people)
     people_link.allow_tags = True
     people_link.short_description = u"наниматель"
+
+    def render_change_form(self, request, context, *args, **kwargs):
+         context['adminform'].form.fields['suit_to_size'].queryset = SuitToSize.objects.filter(suit__branch=request.user.branch)
+         return super(SuitToRentAdmin, self).render_change_form(request, context, args, kwargs)
 
     def get_changelist(self, request, **kwargs):
         """Override the default changelist"""
