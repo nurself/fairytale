@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
+from django.db.models import Sum
 import datetime
 import pytz
 import sys
@@ -171,13 +172,20 @@ class SuitToSize(models.Model):
         self.created_date = timezone.now()
         self.save()
 
+    @property
+    def in_stock(self):
+        if not SuitToRent.objects.filter(suit_to_size__pk=self.pk).filter(agreement__is_returned=False).aggregate(total=Sum('count'))['total']:
+            return self.count
+        else:
+            return self.count - SuitToRent.objects.filter(suit_to_size__pk=self.pk).filter(agreement__is_returned=False).aggregate(total=Sum('count'))['total']
+
     class Meta:
         verbose_name = u'Размер'
         verbose_name_plural = u'Размеры инвентарей'
         unique_together = ('suit', 'size',)
 
     def __str__(self):
-        return self.suit.name + u", размер: " + str(self.size)
+        return self.suit.name + u", размер: " + str(self.size) + u", в наличии: " + str(self.in_stock)
 
 
 class SuitToRent(models.Model):
@@ -189,3 +197,5 @@ class SuitToRent(models.Model):
         verbose_name = u'Инвентарь'
         verbose_name_plural = u'Комплект'
         unique_together = ('agreement', 'suit_to_size',)
+
+
