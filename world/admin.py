@@ -105,7 +105,7 @@ class SuitAdmin(admin.ModelAdmin):
         return super(SuitAdmin, self).render_change_form(request, context, args, kwargs)
 
 
-class SuitToRentListFilter(admin.SimpleListFilter):
+class AgreementListFilter(admin.SimpleListFilter):
     title = (u"Пользователи")
 
     parameter_name = 'authorization'
@@ -124,11 +124,11 @@ class SuitToRentListFilter(admin.SimpleListFilter):
     def queryset(self, request, queryset):
         if request.user.is_admin:
             if not self.value():
-                return SuitToRent.objects.all()
+                return Agreement.objects.all()
             else:
-                return SuitToRent.objects.filter(user=self.value())
+                return Agreement.objects.filter(user=self.value())
         else:
-            return SuitToRent.objects.filter(user=request.user)
+            return Agreement.objects.filter(user=request.user)
 
 
 class SuitToRentInline(admin.StackedInline):
@@ -137,7 +137,6 @@ class SuitToRentInline(admin.StackedInline):
     fieldsets = [
         ( None, {'fields': ['suit_to_size', 'count',]}),
     ]
-    list_filter = (SuitToRentListFilter,)
     extra = 1
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
@@ -154,6 +153,7 @@ class AgreementAdmin(admin.ModelAdmin):
     search_fields = ['protocol_num']
     ordering = ('is_returned','end_date')
     readonly_fields = ('people_link', )
+    list_filter = (AgreementListFilter, 'start_date')
 
     def save_model(self, request, obj, form, change):
         obj.user = request.user

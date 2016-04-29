@@ -198,4 +198,5 @@ class SuitToRent(models.Model):
         verbose_name_plural = u'Комплект'
         unique_together = ('agreement', 'suit_to_size',)
 
-
+    def __str__(self):
+        return self.suit_to_size.suit.name
