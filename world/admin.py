@@ -6,6 +6,7 @@ from .models import SuitToRent
 from .models import SuitToSize
 from .models import People
 from .models import SuitType
+from .models import Agreement
 from easy_select2 import select2_modelform
 from django.utils import timezone
 from django.contrib.admin.views.main import ChangeList
@@ -22,7 +23,7 @@ class TotalChangeList(ChangeList):
     fields_to_total = ['total_price','reserve_sum']
 
     def get_total_values(self, queryset):
-        total = SuitToRent()
+        total = Agreement()
         total.protocol_num = u"Итого"
         total.start_date = timezone.now().date()
         total.end_date = timezone.now().date()
@@ -103,6 +104,7 @@ class SuitAdmin(admin.ModelAdmin):
             context['adminform'].form.fields['branch'].queryset = Branch.objects.filter(pk=request.user.branch.pk)
         return super(SuitAdmin, self).render_change_form(request, context, args, kwargs)
 
+
 class SuitToRentListFilter(admin.SimpleListFilter):
     title = (u"Пользователи")
 
@@ -128,13 +130,27 @@ class SuitToRentListFilter(admin.SimpleListFilter):
         else:
             return SuitToRent.objects.filter(user=request.user)
 
-class SuitToRentAdmin(admin.ModelAdmin):
+
+class SuitToRentInline(admin.StackedInline):
+    model = SuitToRent
     form = select2_modelform(SuitToRent)
     fieldsets = [
-        (None, {'fields': ['protocol_num']}),
-        (u'Информация', {'fields': ['suit_to_size', 'count', 'start_date', 'end_date', 'people', 'reserve_sum', 'total_price', 'is_returned']}),
+        ( None, {'fields': ['suit_to_size', 'count',]}),
     ]
     list_filter = (SuitToRentListFilter,)
+    extra = 1
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        kwargs["queryset"] = SuitToSize.objects.filter(suit__branch=request.user.branch)
+        return super(SuitToRentInline, self).formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+class AgreementAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None, {'fields': ['protocol_num']}),
+        (u'Информация', {'fields': ['start_date', 'end_date', 'people', 'reserve_sum', 'total_price', 'is_returned']}),
+    ]
+    inlines = [SuitToRentInline]
     search_fields = ['protocol_num']
     ordering = ('is_returned','end_date')
     readonly_fields = ('people_link', )
@@ -150,20 +166,15 @@ class SuitToRentAdmin(admin.ModelAdmin):
     people_link.allow_tags = True
     people_link.short_description = u"наниматель"
 
-    def render_change_form(self, request, context, *args, **kwargs):
-         context['adminform'].form.fields['suit_to_size'].queryset = SuitToSize.objects.filter(suit__branch=request.user.branch)
-         return super(SuitToRentAdmin, self).render_change_form(request, context, args, kwargs)
-
     def get_changelist(self, request, **kwargs):
         """Override the default changelist"""
         return TotalChangeList
 
-    list_display = ('protocol_num', 'suit_to_size', 'people_link', 'start_date', 'end_date', 'reserve_sum', 'total_price', 'item_status_return')
+    list_display = ('protocol_num', 'people_link', 'start_date', 'end_date', 'reserve_sum', 'total_price', 'item_status_return')
     list_per_page = 5
 
+
 class UserCreationForm(forms.ModelForm):
-    """A form for creating new users. Includes all the required
-    fields, plus a repeated password."""
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
 
@@ -189,10 +200,6 @@ class UserCreationForm(forms.ModelForm):
 
 
 class UserChangeForm(forms.ModelForm):
-    """A form for updating users. Includes all the fields on
-    the user, but replaces the password field with admin's
-    password hash display field.
-    """
     password = ReadOnlyPasswordHashField()
 
     class Meta:
@@ -200,29 +207,20 @@ class UserChangeForm(forms.ModelForm):
         fields = ('email', 'password', 'branch', 'is_active', 'is_admin')
 
     def clean_password(self):
-        # Regardless of what the user provides, return the initial value.
-        # This is done here, rather than on the field, because the
-        # field does not have access to the initial value
         return self.initial["password"]
 
 
 class UserAdmin(BaseUserAdmin):
-    # The forms to add and change user instances
     form = UserChangeForm
     add_form = UserCreationForm
 
-    # The fields to be used in displaying the User model.
-    # These override the definitions on the base UserAdmin
-    # that reference specific fields on auth.User.
     list_display = ('email', 'branch', 'is_admin', 'is_active', 'is_staff')
-    list_filter = ('is_admin',)
+    list_filter = ('branch',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         ('Personal info', {'fields': ('branch',)}),
         ('Permissions', {'fields': ('is_admin','is_active',)}),
     )
-    # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
-    # overrides get_fieldsets to use this attribute when creating a user.
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
@@ -247,6 +245,6 @@ admin.site.register(MyUser, UserAdmin)
 admin.site.register(Suit, SuitAdmin)
 admin.site.register(Branch)
 admin.site.register(SuitType)
-admin.site.register(SuitToRent, SuitToRentAdmin)
+admin.site.register(Agreement, AgreementAdmin)
 admin.site.register(People, PeopleAdmin)
 admin.site.unregister(Group)

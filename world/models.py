@@ -134,6 +134,32 @@ class Suit(models.Model):
     def __str__(self):
         return self.name
 
+class Agreement(models.Model):
+    protocol_num = models.CharField(max_length=20, verbose_name=u"Номер договора")
+    start_date = models.DateField(default=timezone.now, verbose_name=u"Дата начала проката")
+    end_date = models.DateField(default=timezone.now, verbose_name=u"Дата конца проката")
+    people = models.ForeignKey(People, verbose_name=u"Наниматель")
+    reserve_sum = models.IntegerField(verbose_name=u"Сумма при брони")
+    total_price = models.IntegerField(verbose_name=u"Общая сумма")
+    user = models.ForeignKey(MyUser, verbose_name=u"Наймодатель")
+    published_date = models.DateTimeField(default=timezone.now, verbose_name=u"Дата записи")
+    is_returned = models.NullBooleanField(null=True, blank=True, verbose_name=u"Возвращено?")
+
+    def item_status_return(self):
+        utc = pytz.UTC
+        enddate = utc.localize(datetime.datetime.strptime(self.end_date.__str__(), '%Y-%m-%d'))
+        return enddate > timezone.now() or self.is_returned
+
+    item_status_return.admin_order_field = 'published_date'
+    item_status_return.boolean = True
+    item_status_return.short_description = u'Статус'
+
+    def __str__(self):
+        return self.protocol_num
+
+    class Meta:
+        verbose_name = u'Договор'
+        verbose_name_plural = u'База договоров'
 
 class SuitToSize(models.Model):
     suit = models.ForeignKey(Suit, verbose_name=u"Инвентарь")
@@ -155,30 +181,11 @@ class SuitToSize(models.Model):
 
 
 class SuitToRent(models.Model):
-    protocol_num = models.CharField(max_length=20, verbose_name=u"Номер договора")
+    agreement = models.ForeignKey(Agreement, verbose_name=u"Номер договора")
     suit_to_size = models.ForeignKey(SuitToSize, verbose_name=u"Инвентарь")
     count = models.IntegerField(verbose_name=u"Количество")
-    start_date = models.DateField(default=timezone.now, verbose_name=u"Дата начала проката")
-    end_date = models.DateField(default=timezone.now, verbose_name=u"Дата конца проката")
-    people = models.ForeignKey(People, verbose_name=u"Наниматель")
-    reserve_sum = models.IntegerField(verbose_name=u"Сумма при брони")
-    total_price = models.IntegerField(verbose_name=u"Общая сумма")
-    user = models.ForeignKey(MyUser, verbose_name=u"Наймодатель")
-    published_date = models.DateTimeField(default=timezone.now, verbose_name=u"Дата записи")
-    is_returned = models.NullBooleanField(null=True, blank=True, verbose_name=u"Возвращено?")
-
-    def item_status_return(self):
-        utc = pytz.UTC
-        enddate = utc.localize(datetime.datetime.strptime(self.end_date.__str__(), '%Y-%m-%d'))
-        return enddate > timezone.now() or self.is_returned
-
-    item_status_return.admin_order_field = 'published_date'
-    item_status_return.boolean = True
-    item_status_return.short_description = u'Статус'
 
     class Meta:
-        verbose_name = u'Договор'
-        verbose_name_plural = u'База договоров'
-
-    def __str__(self):
-        return self.suit_to_size.suit.name
+        verbose_name = u'Инвентарь'
+        verbose_name_plural = u'Комплект'
+        unique_together = ('agreement', 'suit_to_size',)
