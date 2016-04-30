@@ -1,17 +1,10 @@
 # _*_ coding: utf-8
 from django.contrib import admin
-from .models import Suit
-from .models import Branch
-from .models import SuitToRent
-from .models import SuitToSize
-from .models import People
-from .models import SuitType
-from .models import Agreement
+from .models import *
 from easy_select2 import select2_modelform
 from django.utils import timezone
 from django.contrib.admin.views.main import ChangeList
 from django.db.models import Sum
-from .models import MyUser
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.forms import UserChangeForm
@@ -33,6 +26,7 @@ class TotalChangeList(ChangeList):
         return total
 
     def get_results(self, request):
+        raise forms.ValidationError("TEST EXCEPTION!")
         super(TotalChangeList, self).get_results(request)
         total = self.get_total_values(self.queryset)
         len(self.result_list)
@@ -240,7 +234,20 @@ class UserAdmin(BaseUserAdmin):
     def has_change_permission(self, request, obj=None):
         return request.user.is_admin
 
+class SystemErrorLogAdmin(admin.ModelAdmin):
+    ordering = ('-timestamp',)
+    list_display = ('level', 'message', 'timestamp',)
+    list_filter = ('level',)
+    search_fields = ('level','message',)
 
+    def has_add_permission(self, request):
+        return False
+
+    def get_readonly_fields(self, request, obj=None):
+        return self.readonly_fields + ('level', 'message', 'timestamp')
+
+
+admin.site.register(SystemErrorLog, SystemErrorLogAdmin)
 admin.site.register(MyUser, UserAdmin)
 admin.site.register(Suit, SuitAdmin)
 admin.site.register(Branch)

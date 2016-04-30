@@ -16,7 +16,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\','/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
 
 MEDIA_URL = '/media/'
 
@@ -115,3 +115,41 @@ AUTHENTICATION_BACKENDS = (
 
 CUSTOM_USER_MODEL = 'world.MyUser'
 AUTH_USER_MODEL = 'world.MyUser'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['db'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'world': {
+            'handlers': ['db'],
+            'level': 'DEBUG',
+            'propagate': False,
+        }
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': './log.log',
+            'formatter': 'verbose'
+        },
+        'db': {
+            'level': 'DEBUG',
+            'class': 'theatre.loggers.DBHandler',
+            'formatter': 'verbose'
+        }
+    }
+}

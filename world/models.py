@@ -167,10 +167,6 @@ class SuitToSize(models.Model):
     count = models.IntegerField(default=1, verbose_name=u"Количество")
     created_date = models.DateField(default=timezone.now(), verbose_name=u"Дата добавления")
 
-    def publish(self):
-        self.created_date = timezone.now()
-        self.save()
-
     @property
     def in_stock(self):
         if not SuitToRent.objects.filter(suit_to_size__pk=self.pk).filter(agreement__is_returned=False).aggregate(total=Sum('count'))['total']:
@@ -199,3 +195,8 @@ class SuitToRent(models.Model):
 
     def __str__(self):
         return self.suit_to_size.suit.name
+
+class SystemErrorLog(models.Model):
+    level = models.CharField(max_length=200)
+    message = models.TextField()
+    timestamp = models.DateTimeField('Дата и время', null=True, blank=True)
