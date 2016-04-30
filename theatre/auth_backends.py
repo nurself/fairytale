@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.backends import ModelBackend
 from django.core.exceptions import ImproperlyConfigured
-from django.db.models import get_model
+import swapper
 
 class CustomUserModelBackend(ModelBackend):
     def authenticate(self, username=None, password=None):
@@ -21,7 +21,7 @@ class CustomUserModelBackend(ModelBackend):
     @property
     def user_class(self):
         if not hasattr(self, '_user_class'):
-            self._user_class = get_model(*settings.CUSTOM_USER_MODEL.split('.', 2))
+            self._user_class = swapper.load_model(*settings.CUSTOM_USER_MODEL.split('.', 2))
             if not self._user_class:
                 raise ImproperlyConfigured('Could not get custom user model')
         return self._user_class
