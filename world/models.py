@@ -6,7 +6,6 @@ from django.contrib.auth.models import PermissionsMixin
 from django.db.models import Sum
 import datetime
 import pytz
-import sys
 
 
 class Branch(models.Model):
@@ -47,14 +46,14 @@ class MyUserManager(BaseUserManager):
 
 class MyUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
-        verbose_name='email address',
+        verbose_name=u"Email адрес",
         max_length=255,
         unique=True,
     )
-    branch = models.ForeignKey(Branch, null=True, blank=True)
-    is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=True)
+    branch = models.ForeignKey(Branch, null=True, blank=True, verbose_name=u"Филиал")
+    is_active = models.BooleanField(default=True, verbose_name=u"Активный")
+    is_admin = models.BooleanField(default=False, verbose_name=u"Администратор")
+    is_staff = models.BooleanField(default=True, verbose_name=u"Персонал")
 
     objects = MyUserManager()
 
