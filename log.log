@@ -1234,3 +1234,744 @@ WARNING 2016-05-03 14:40:51,238 base 6496 9776 Not Found: /admin/world/suit/%s/c
 WARNING 2016-05-03 14:40:51,291 base 6496 6476 Not Found: /admin/world/suit/%s/change/
 WARNING 2016-05-03 14:40:54,686 base 6496 10944 Not Found: /admin/world/suit/%s/change/
 WARNING 2016-05-03 14:40:54,729 base 6496 3260 Not Found: /admin/world/suit/%s/change/
+ERROR 2016-05-03 15:08:07,403 base 6476 7080 Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 193, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\core\handlers\base.py", line 123, in get_response
+    response = middleware_method(request)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\middleware\locale.py", line 25, in process_request
+    request, check_path=self.is_language_prefix_patterns_used)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\__init__.py", line 199, in get_language_from_request
+    return _trans.get_language_from_request(request, check_path)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\trans_real.py", line 494, in get_language_from_request
+    lang_code = request.session.get(LANGUAGE_SESSION_KEY)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 59, in get
+    return self._session.get(key, default)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 198, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\db.py", line 33, in load
+    expire_date__gt=timezone.now()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 381, in get
+    num = len(clone)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 240, in __len__
+    self._fetch_all()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\sql\compiler.py", line 848, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+ERROR 2016-05-03 15:13:10,471 base 8608 8932 Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 193, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\core\handlers\base.py", line 123, in get_response
+    response = middleware_method(request)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\middleware\locale.py", line 25, in process_request
+    request, check_path=self.is_language_prefix_patterns_used)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\__init__.py", line 199, in get_language_from_request
+    return _trans.get_language_from_request(request, check_path)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\trans_real.py", line 494, in get_language_from_request
+    lang_code = request.session.get(LANGUAGE_SESSION_KEY)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 59, in get
+    return self._session.get(key, default)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 198, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\db.py", line 33, in load
+    expire_date__gt=timezone.now()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 381, in get
+    num = len(clone)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 240, in __len__
+    self._fetch_all()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\sql\compiler.py", line 848, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+ERROR 2016-05-03 15:14:10,096 base 11028 6152 Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 193, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\core\handlers\base.py", line 123, in get_response
+    response = middleware_method(request)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\middleware\locale.py", line 25, in process_request
+    request, check_path=self.is_language_prefix_patterns_used)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\__init__.py", line 199, in get_language_from_request
+    return _trans.get_language_from_request(request, check_path)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\trans_real.py", line 494, in get_language_from_request
+    lang_code = request.session.get(LANGUAGE_SESSION_KEY)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 59, in get
+    return self._session.get(key, default)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 198, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\db.py", line 33, in load
+    expire_date__gt=timezone.now()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 381, in get
+    num = len(clone)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 240, in __len__
+    self._fetch_all()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\sql\compiler.py", line 848, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+ERROR 2016-05-03 15:15:22,467 base 4252 9240 Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 193, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\core\handlers\base.py", line 123, in get_response
+    response = middleware_method(request)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\middleware\locale.py", line 25, in process_request
+    request, check_path=self.is_language_prefix_patterns_used)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\__init__.py", line 199, in get_language_from_request
+    return _trans.get_language_from_request(request, check_path)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\trans_real.py", line 494, in get_language_from_request
+    lang_code = request.session.get(LANGUAGE_SESSION_KEY)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 59, in get
+    return self._session.get(key, default)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 198, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\db.py", line 33, in load
+    expire_date__gt=timezone.now()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 381, in get
+    num = len(clone)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 240, in __len__
+    self._fetch_all()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\sql\compiler.py", line 848, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+ERROR 2016-05-03 15:15:22,890 base 4252 7064 Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 193, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\core\handlers\base.py", line 123, in get_response
+    response = middleware_method(request)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\middleware\locale.py", line 25, in process_request
+    request, check_path=self.is_language_prefix_patterns_used)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\__init__.py", line 199, in get_language_from_request
+    return _trans.get_language_from_request(request, check_path)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\trans_real.py", line 494, in get_language_from_request
+    lang_code = request.session.get(LANGUAGE_SESSION_KEY)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 59, in get
+    return self._session.get(key, default)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 198, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\db.py", line 33, in load
+    expire_date__gt=timezone.now()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 381, in get
+    num = len(clone)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 240, in __len__
+    self._fetch_all()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\sql\compiler.py", line 848, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+ERROR 2016-05-03 15:15:23,793 base 4252 10420 Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 193, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\core\handlers\base.py", line 123, in get_response
+    response = middleware_method(request)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\middleware\locale.py", line 25, in process_request
+    request, check_path=self.is_language_prefix_patterns_used)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\__init__.py", line 199, in get_language_from_request
+    return _trans.get_language_from_request(request, check_path)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\trans_real.py", line 494, in get_language_from_request
+    lang_code = request.session.get(LANGUAGE_SESSION_KEY)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 59, in get
+    return self._session.get(key, default)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 198, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\db.py", line 33, in load
+    expire_date__gt=timezone.now()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 381, in get
+    num = len(clone)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 240, in __len__
+    self._fetch_all()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\sql\compiler.py", line 848, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+ERROR 2016-05-03 15:15:24,586 base 4252 11096 Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 193, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\core\handlers\base.py", line 123, in get_response
+    response = middleware_method(request)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\middleware\locale.py", line 25, in process_request
+    request, check_path=self.is_language_prefix_patterns_used)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\__init__.py", line 199, in get_language_from_request
+    return _trans.get_language_from_request(request, check_path)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\trans_real.py", line 494, in get_language_from_request
+    lang_code = request.session.get(LANGUAGE_SESSION_KEY)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 59, in get
+    return self._session.get(key, default)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 198, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\db.py", line 33, in load
+    expire_date__gt=timezone.now()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 381, in get
+    num = len(clone)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 240, in __len__
+    self._fetch_all()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\sql\compiler.py", line 848, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+ERROR 2016-05-03 15:15:25,262 base 4252 9972 Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 193, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\core\handlers\base.py", line 123, in get_response
+    response = middleware_method(request)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\middleware\locale.py", line 25, in process_request
+    request, check_path=self.is_language_prefix_patterns_used)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\__init__.py", line 199, in get_language_from_request
+    return _trans.get_language_from_request(request, check_path)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\trans_real.py", line 494, in get_language_from_request
+    lang_code = request.session.get(LANGUAGE_SESSION_KEY)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 59, in get
+    return self._session.get(key, default)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 198, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\db.py", line 33, in load
+    expire_date__gt=timezone.now()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 381, in get
+    num = len(clone)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 240, in __len__
+    self._fetch_all()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\sql\compiler.py", line 848, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+ERROR 2016-05-03 15:15:44,131 base 4252 8416 Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 193, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\core\handlers\base.py", line 123, in get_response
+    response = middleware_method(request)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\middleware\locale.py", line 25, in process_request
+    request, check_path=self.is_language_prefix_patterns_used)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\__init__.py", line 199, in get_language_from_request
+    return _trans.get_language_from_request(request, check_path)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\trans_real.py", line 494, in get_language_from_request
+    lang_code = request.session.get(LANGUAGE_SESSION_KEY)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 59, in get
+    return self._session.get(key, default)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 198, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\db.py", line 33, in load
+    expire_date__gt=timezone.now()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 381, in get
+    num = len(clone)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 240, in __len__
+    self._fetch_all()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\sql\compiler.py", line 848, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+ERROR 2016-05-03 15:15:45,845 base 4252 10308 Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 193, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\core\handlers\base.py", line 123, in get_response
+    response = middleware_method(request)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\middleware\locale.py", line 25, in process_request
+    request, check_path=self.is_language_prefix_patterns_used)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\__init__.py", line 199, in get_language_from_request
+    return _trans.get_language_from_request(request, check_path)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\trans_real.py", line 494, in get_language_from_request
+    lang_code = request.session.get(LANGUAGE_SESSION_KEY)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 59, in get
+    return self._session.get(key, default)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 198, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\db.py", line 33, in load
+    expire_date__gt=timezone.now()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 381, in get
+    num = len(clone)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 240, in __len__
+    self._fetch_all()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\sql\compiler.py", line 848, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+ERROR 2016-05-03 15:16:10,223 base 11188 6496 Internal Server Error: /admin/world/suit/
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 193, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\core\handlers\base.py", line 123, in get_response
+    response = middleware_method(request)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\middleware\locale.py", line 25, in process_request
+    request, check_path=self.is_language_prefix_patterns_used)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\__init__.py", line 199, in get_language_from_request
+    return _trans.get_language_from_request(request, check_path)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\trans_real.py", line 494, in get_language_from_request
+    lang_code = request.session.get(LANGUAGE_SESSION_KEY)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 59, in get
+    return self._session.get(key, default)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 198, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\db.py", line 33, in load
+    expire_date__gt=timezone.now()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 381, in get
+    num = len(clone)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 240, in __len__
+    self._fetch_all()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\sql\compiler.py", line 848, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+ERROR 2016-05-03 15:16:14,686 base 11188 8556 Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 193, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\core\handlers\base.py", line 123, in get_response
+    response = middleware_method(request)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\middleware\locale.py", line 25, in process_request
+    request, check_path=self.is_language_prefix_patterns_used)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\__init__.py", line 199, in get_language_from_request
+    return _trans.get_language_from_request(request, check_path)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\trans_real.py", line 494, in get_language_from_request
+    lang_code = request.session.get(LANGUAGE_SESSION_KEY)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 59, in get
+    return self._session.get(key, default)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 198, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\db.py", line 33, in load
+    expire_date__gt=timezone.now()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 381, in get
+    num = len(clone)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 240, in __len__
+    self._fetch_all()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\sql\compiler.py", line 848, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+ERROR 2016-05-03 15:16:15,836 base 11188 10516 Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 193, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\core\handlers\base.py", line 123, in get_response
+    response = middleware_method(request)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\middleware\locale.py", line 25, in process_request
+    request, check_path=self.is_language_prefix_patterns_used)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\__init__.py", line 199, in get_language_from_request
+    return _trans.get_language_from_request(request, check_path)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\translation\trans_real.py", line 494, in get_language_from_request
+    lang_code = request.session.get(LANGUAGE_SESSION_KEY)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 59, in get
+    return self._session.get(key, default)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\base.py", line 198, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\contrib\sessions\backends\db.py", line 33, in load
+    expire_date__gt=timezone.now()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 381, in get
+    num = len(clone)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 240, in __len__
+    self._fetch_all()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\models\sql\compiler.py", line 848, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\fairytale\myvenv\lib\site-packages\django\db\backends\sqlite3\base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
