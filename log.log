@@ -1218,3 +1218,19 @@ Traceback (most recent call last):
   File "/Users/n.aidarkulov/django/fairytale/world/admin.py", line 29, in get_results
     raise forms.ValidationError("TEST EXCEPTION!")
 django.core.exceptions.ValidationError: ['TEST EXCEPTION!']
+WARNING 2016-05-03 14:35:38,276 base 6552 7912 Not Found: /admin/world/suit/%s/change/
+WARNING 2016-05-03 14:35:38,329 base 6552 9160 Not Found: /admin/world/suit/%s/change/
+WARNING 2016-05-03 14:36:09,651 base 6552 11836 Not Found: /admin/world/suit/%s/change/
+WARNING 2016-05-03 14:36:09,700 base 6552 8088 Not Found: /admin/world/suit/%s/change/
+WARNING 2016-05-03 14:37:21,567 base 6552 1372 Not Found: /admin/world/suit/%s/change/
+WARNING 2016-05-03 14:37:21,616 base 6552 10112 Not Found: /admin/world/suit/%s/change/
+WARNING 2016-05-03 14:40:11,484 base 6496 7372 Not Found: /admin/world/suit/%s/change/
+WARNING 2016-05-03 14:40:11,526 base 6496 11832 Not Found: /admin/world/suit/%s/change/
+WARNING 2016-05-03 14:40:19,549 base 6496 9392 Not Found: /admin/world/suit/%s/change/
+WARNING 2016-05-03 14:40:19,592 base 6496 6508 Not Found: /admin/world/suit/%s/change/
+WARNING 2016-05-03 14:40:41,913 base 6496 9996 Not Found: /admin/world/suit/%s/change/
+WARNING 2016-05-03 14:40:41,969 base 6496 8928 Not Found: /admin/world/suit/%s/change/
+WARNING 2016-05-03 14:40:51,238 base 6496 9776 Not Found: /admin/world/suit/%s/change/
+WARNING 2016-05-03 14:40:51,291 base 6496 6476 Not Found: /admin/world/suit/%s/change/
+WARNING 2016-05-03 14:40:54,686 base 6496 10944 Not Found: /admin/world/suit/%s/change/
+WARNING 2016-05-03 14:40:54,729 base 6496 3260 Not Found: /admin/world/suit/%s/change/

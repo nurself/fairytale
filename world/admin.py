@@ -39,17 +39,12 @@ class PeopleAdmin(admin.ModelAdmin):
     list_display = ['name', 'passport_data', 'address', 'phone', ]
     search_fields = ['name']
 
-class AlwaysChangedModelForm(ModelForm):
-    def has_changed(self):
-        return True
-
 class SuitToSizeInline(admin.StackedInline):
     model = SuitToSize
     fieldsets = [
         (None, {'fields': ['size', 'count']}),
     ]
     extra = 1
-    form = AlwaysChangedModelForm
 
 class SuitListFilter(admin.SimpleListFilter):
     title = (u"Филиалы")

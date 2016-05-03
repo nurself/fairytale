@@ -163,8 +163,8 @@ class Agreement(models.Model):
 
 class SuitToSize(models.Model):
     suit = models.ForeignKey(Suit, verbose_name=u"Инвентарь")
-    size = models.IntegerField(default=1, verbose_name=u"Размер")
-    count = models.IntegerField(default=1, verbose_name=u"Количество")
+    size = models.IntegerField(verbose_name=u"Размер")
+    count = models.IntegerField(verbose_name=u"Количество")
     created_date = models.DateField(default=timezone.now(), verbose_name=u"Дата добавления")
 
     @property
