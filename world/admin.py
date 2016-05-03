@@ -10,7 +10,6 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import Group
 from django import forms
-from django.forms.models import  ModelForm
 
 class TotalChangeList(ChangeList):
     fields_to_total = ['total_price','reserve_sum']
