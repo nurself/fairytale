@@ -26,7 +26,6 @@ class TotalChangeList(ChangeList):
         return total
 
     def get_results(self, request):
-        raise forms.ValidationError("TEST EXCEPTION!")
         super(TotalChangeList, self).get_results(request)
         total = self.get_total_values(self.queryset)
         len(self.result_list)

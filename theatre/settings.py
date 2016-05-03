@@ -129,12 +129,12 @@ LOGGING = {
     },
     'loggers': {
         'django.request': {
-            'handlers': ['db'],
+            'handlers': ['db', 'file'],
             'level': 'DEBUG',
             'propagate': False,
         },
         'world': {
-            'handlers': ['db'],
+            'handlers': ['db', 'file'],
             'level': 'DEBUG',
             'propagate': False,
         }

@@ -1167,3 +1167,54 @@ Traceback (most recent call last):
   File "C:\Users\user\fairytale\world\admin.py", line 37, in get_results
     raise forms.ValidationError("TEST EXCEPTION!")
 django.core.exceptions.ValidationError: ['TEST EXCEPTION!']
+WARNING 2016-05-02 20:46:28,709 base 6014 123145312813056 Not Found: /favicon.ico
+ERROR 2016-05-02 20:46:49,730 base 6014 123145312813056 Internal Server Error: /admin/world/agreement/
+Traceback (most recent call last):
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/contrib/admin/options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/utils/decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/contrib/admin/sites.py", line 233, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/utils/decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/contrib/admin/options.py", line 1548, in changelist_view
+    self.list_max_show_all, self.list_editable, self)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/contrib/admin/views/main.py", line 82, in __init__
+    self.get_results(request)
+  File "/Users/n.aidarkulov/django/fairytale/world/admin.py", line 29, in get_results
+    raise forms.ValidationError("TEST EXCEPTION!")
+django.core.exceptions.ValidationError: ['TEST EXCEPTION!']
+ERROR 2016-05-02 20:49:17,879 base 6040 123145312813056 Internal Server Error: /admin/world/agreement/
+Traceback (most recent call last):
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/contrib/admin/options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/utils/decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/contrib/admin/sites.py", line 233, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/utils/decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/contrib/admin/options.py", line 1548, in changelist_view
+    self.list_max_show_all, self.list_editable, self)
+  File "/Users/n.aidarkulov/django/fairytale/myvenv/lib/python3.4/site-packages/django/contrib/admin/views/main.py", line 82, in __init__
+    self.get_results(request)
+  File "/Users/n.aidarkulov/django/fairytale/world/admin.py", line 29, in get_results
+    raise forms.ValidationError("TEST EXCEPTION!")
+django.core.exceptions.ValidationError: ['TEST EXCEPTION!']
