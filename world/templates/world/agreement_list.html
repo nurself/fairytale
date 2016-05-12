@@ -1,0 +1,10 @@
+    {% extends 'world/base.html' %}
+
+    {% block content %}
+        {% for agreement in agreements %}
+            <div class="suit">
+   		<h1><a href="{% url 'agreement_detail' pk=agreement.pk %}">{{ agreement.protocol_num }}</a></h1>
+		 <p>{{ agreement.reserve_sum|linebreaks }}</p>
+            </div>
+        {% endfor %}
+    {% endblock content %}

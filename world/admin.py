@@ -153,11 +153,17 @@ class AgreementAdmin(admin.ModelAdmin):
     people_link.allow_tags = True
     people_link.short_description = u"наниматель"
 
+    def print_link(self, obj):
+        return '<a href="/agreement/%s" target="_blank">%s</a>' \
+               % (obj.people.pk, u"Печать")
+    print_link.allow_tags = True
+    print_link.short_description = u"печать"
+
     def get_changelist(self, request, **kwargs):
         """Override the default changelist"""
         return TotalChangeList
 
-    list_display = ('protocol_num', 'people_link', 'start_date', 'end_date', 'reserve_sum', 'total_price', 'item_status_return')
+    list_display = ('protocol_num', 'people_link', 'start_date', 'end_date', 'reserve_sum', 'total_price', 'item_status_return', 'print_link')
     list_per_page = 5
 
 
@@ -232,6 +238,12 @@ class SystemErrorLogAdmin(admin.ModelAdmin):
     list_display = ('level', 'message', 'timestamp',)
     list_filter = ('level',)
     search_fields = ('level','message',)
+
+    def has_change_permission(self, request, obj=None):
+        return request.user.is_admin
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 
     def has_add_permission(self, request):
         return False

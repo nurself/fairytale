@@ -19,6 +19,9 @@ class Branch(models.Model):
     def __str__(self):
         return self.name
 
+    def __unicode__(self):
+        return u"%s" % self.name
+
 
 class MyUserManager(BaseUserManager):
     def create_user(self, email, branch, password=None):
@@ -90,6 +93,8 @@ class SuitType(models.Model):
     def __str__(self):
         return self.name
 
+    def __unicode__(self):
+        return u"%s" % self.name
 
 class People(models.Model):
     name = models.CharField(unique=True, max_length=100, verbose_name=u"ФИО")
@@ -104,6 +109,8 @@ class People(models.Model):
     def __str__(self):
         return self.name
 
+    def __unicode__(self):
+        return u"%s" % self.name
 
 class Suit(models.Model):
     name = models.CharField(unique=True, max_length=100, verbose_name=u"Наименование")
@@ -133,6 +140,9 @@ class Suit(models.Model):
 
     def __str__(self):
         return self.name
+
+    def __unicode__(self):
+        return u"%s" % self.name
 
 class Agreement(models.Model):
     protocol_num = models.CharField(max_length=20, verbose_name=u"Номер договора")
@@ -180,8 +190,18 @@ class SuitToSize(models.Model):
         unique_together = ('suit', 'size',)
 
     def __str__(self):
-        return self.suit.name + u", размер: " + str(self.size) + u", в наличии: " + str(self.in_stock)
+        if self.suittorent_set.filter(agreement__is_returned=None).count() > 0:
+            first = self.suittorent_set.filter(agreement__is_returned=None)[0]
+            return self.suit.name + u", размер: " + str(self.size) + u", в наличии: " + str(self.in_stock) + u", забронирован на: " + str(first.agreement.start_date)
+        else:
+            return self.suit.name + u", размер: " + str(self.size) + u", в наличии: " + str(self.in_stock)
 
+    def __unicode__(self):
+        if self.suittorent_set.filter(agreement__is_returned=None).count() > 0:
+            first = self.suittorent_set.filter(agreement__is_returned=None)[0]
+            return u"%s" % self.suit.name + u", размер: " + str(self.size) + u", в наличии: " + str(self.in_stock) + u", забронирован на: " + str(first.agreement.start_date)
+        else:
+            return u"%s" % self.suit.name + u", размер: " + str(self.size) + u", в наличии: " + str(self.in_stock)
 
 class SuitToRent(models.Model):
     agreement = models.ForeignKey(Agreement, verbose_name=u"Номер договора")
@@ -195,6 +215,9 @@ class SuitToRent(models.Model):
 
     def __str__(self):
         return self.suit_to_size.suit.name
+
+    def __unicode__(self):
+        return u"%s" % self.suit_to_size.suit.name
 
 class SystemErrorLog(models.Model):
     level = models.CharField(max_length=200)

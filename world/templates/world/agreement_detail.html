@@ -1,0 +1,113 @@
+    {% extends 'world/base.html' %}
+
+    {% block content %}
+        <div class="suit">
+      <p><b>                          Договор (бронь) на прокат имущества № {{ agreement.protocol_num }} </b></p>
+        <p style="text-align: left">{{ agreement.published_date.date }} <span style="float:right;">г. Бишкек</span></p>
+        <p style="text-align: left">ОсОО "Мир Сказок", именуемое в дальнейшем "Наймодатель", в лице Генерального
+        директора Гайпбердиева Т.Т., действующего на основании Устава, с одной Стороны, и гр.,
+        {{ agreement.people.name }}, тел: {{ agreement.people.phone }}
+        именуемый в дальнейшем "Наниматель", с другой Стороны, заключили настоящий
+        Договор о нижеследующем:</p>
+      <p><b>                          1. Предмет договора. </b></p>
+       <p style="text-align: left"> 1.1 "Наймодатель" обязуется передать Нанимателю во временное пользование
+            нижеперечисленное имущество в комплекте:</p>
+
+        <table id="renttable" border="2" style="width:100%">
+            <tr>
+                <td><b>Наименование</b></td>
+                <td><b>Стоимость (имущества)</b></td>
+                <td><b>Стоимость проката</b></td>
+            </tr>
+            {% for suit in agreement.suittorent_set.all %}
+                <tr>
+                    <td>{{suit.suit_to_size.suit.name}}</td>
+                    <td  class="count-item">{{suit.suit_to_size.suit.item_price}}</td>
+                    <td  class="count-rent">{{suit.suit_to_size.suit.rent_price}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <script language="javascript" type="text/javascript">
+            var tds = document.getElementById('renttable').getElementsByTagName('td');
+            var sumitem = 0;
+            for(var i = 0; i < tds.length; i ++) {
+                if(tds[i].className == 'count-item') {
+                    sumitem += isNaN(tds[i].innerHTML) ? 0 : parseInt(tds[i].innerHTML);
+                }
+            }
+            var sumrent = 0;
+            for(var i = 0; i < tds.length; i ++) {
+                if(tds[i].className == 'count-rent') {
+                    sumrent += isNaN(tds[i].innerHTML) ? 0 : parseInt(tds[i].innerHTML);
+                }
+            }
+            document.getElementById('renttable').innerHTML += '<tr><td><b>Итого:</b></td><td>' + sumitem + '</td><td>' + sumrent + '</td></tr>';
+        </script>
+
+
+      <p><b>                          2. Расчеты.          </b></p>
+        <p style="text-align: left">2.1 "Наниматель"обязуется уплатить "Наймодателю" оплату в размере {{ agreement.total_price }} сом
+        (_________________________________________________________________ сомов) за каждый день проката.</p>
+      <p><b>                          3. Срок действия договора.     </b></p>
+        <p style="text-align: left">3.1 Договор действует с {{ agreement.start_date }} по {{ agreement.end_date }}</p>
+        <p style="text-align: left">3.2 Обязательства в части расчетов между Сторонами по настоящему Договору
+            продолжают действовать и после истечения действия Договора по их полного исполнения.</p>
+
+      <p><b>                          4. Права и обязанности сторон.     </b></p>
+        <p style="text-align: left">4.1 "Наймодатель" обязан предоставить "Нанимателю" предмет проката, указанный в
+            пункте 1.1.</p>
+        <p style="text-align: left">4.2 "Наниматель" обязуется пользоваться предметами проката "Наймодателя" в
+            соответствии с их назначением и вернуть в срок указанный в пункте 3.1</p>
+        <p style="text-align: left">4.3 За время пользования предметами проката "Наниматель" обязуется уплатить
+            "Наймодателю" оплату в размере суммы, указанной в пункте 2.1. за каждый день
+            проката.</p>
+        <p style="text-align: left">4.4 При бронировании "Наниматель" обязуется  внести сумму залога в размере 50%
+            стоимости проката костюма, указанной в пункте 2.1., которую в случае отказа от
+            костюма "Наймодатель" "Нанимателю" не возвращает.
+            "Наниматель" внес сумму ({{ agreement.reserve_sum }}) __________________________________ сом.</p>
+        <p style="text-align: left">4.5 За несвоевременный возврат предметов проката "Наниматель" уплачивает
+            "Наймодателю" помимо оплаты, указанной в пункте 2.1., штраф в размере 100%
+            стоимости проката за каждый просроченный день.</p>
+        <p style="text-align: left"><b>4.6 В случае утери или порчи предметов проката составляется "Акт об утере или
+            порчи имущества" в двух экземплярях, "Наниматель" обязуется возместить
+            "Наймодателю" их полную стоимость, а также упущенную выгоду в размере 50%
+            от первоначальной стоимости предметов проката</b>, при этом испорченное
+            имущество остается в собственности "Наймодателя"</p>
+        <p style="text-align: left"><b>4.7 В случае частичной порчи предметов проката "Наниматель" обязуется
+            возместить "Наймодателю" причиненный ущерб, установленный по "Акту о
+            частичной порчи имущества", а также упущенную выгоду в размере 50% от
+            первоначальной стоимости предметов проката</b>, при этом испорченное имущество
+            остается в собственности "Наймодателя".</p>
+
+      <p><b>                          5. Ответственность сторон.     </b></p>
+        <p style="text-align: left">5.1 За неисполнение или ненадлежащее исполнение обязательств по настоящему
+            Договору стороны несут ответственность в соответствии с действующим
+            законодательством КР.</p>
+        <p style="text-align: left">5.2 Все разногласия по настоящему Договору Стороны решают путем переговоров. В
+            случае не урегулирования спорных вопросов, споры между Сторонами решаются в
+            судебном порядке, установленном законодательством КР.</p>
+      <p><b>                          6. Прочие положения.       </b></p>
+        <p style="text-align: left">6.1 Настоящие договор составлен в двух экземплярах, по одному каждой Стороне,
+            которые имеют одинаковую юридическую силу.</p>
+        <p style="text-align: left"><b>6.2 В ЗАЛОГ "Наниматель" оставляет двойную стоимость костюма.</b></p>
+        <p style="text-align: left">Указать вид залога:______________________________________________________</p>
+
+
+      <p><b>                          Реквизиты сторон:         </b></p>
+      <p style="text-align: left"><b>  Наймодатель             <span style="float:right;">Наниматель </span></b></p>
+      <p style="text-align: left">  ОсОО "Мир Сказок"       <span style="float:right;"> {{ agreement.people.name }}</span></p>
+      <p style="text-align: left">  ИНН 0291020130073       <span style="float:right;">    Паспортные данные:</span></p>
+      <p style="text-align: left">  Тел. (0312) 93 67 95, (0771) 33 27 91, (0771) 55 60 77 <span style="float:right;">{{ agreement.people.passport_data }}</span></p>
+      <p style="text-align: left">  Режим работы: с 9:00 до 17:00, Субб с 9:00 до 16:00 <span style="float:right;">Адрес: {{ agreement.people.address }}</span></p>
+      <p style="text-align: left">  Обед с 12:00 до 13:00 <span style="float:right;">Тел: {{ agreement.people.phone }}</span></p>
+      <p style="text-align: left">  М.П __________________    <span style="float:right;">____________________________</span></p>
+
+      <p><b>                          Расписка                  </b></p>
+      <p style="text-align: left">  Я, {{ agreement.people.name }},
+        даю настоящую расписку в том, что с правилами эксплуатации полученного в прокат по
+        вышеуказанному Договору имущества ознакомлен.</p>
+      <p style="text-align: left">  ________________<span style="float:right;">_________________</span></p>
+      <p style="text-align: left">      дата        <span style="float:right;">подпись</span></p>
+        <button type="submit" class="save btn btn-default" onclick="javascript:window.print();">Печать</button>
+        </div>
+    {% endblock %}

@@ -1,7 +1,4 @@
-from django.shortcuts import render
-from django.utils import timezone
-from .models import Suit
-from .forms import SuitForm
+from .forms import *
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 
@@ -36,3 +33,13 @@ def suit_edit(request, pk):
     else:
         form = SuitForm(instance=suit)
     return render(request, 'world/suit_edit.html', {'form': form})
+
+
+def agreement_list(request):
+    agreements = Agreement.objects.order_by('-published_date')
+    return render(request, 'world/agreement_list.html', {'agreements': agreements})
+
+
+def agreement_detail(request, pk):
+    agreement = get_object_or_404(Agreement, pk=pk)
+    return render(request, 'world/agreement_detail.html', {'agreement': agreement})
