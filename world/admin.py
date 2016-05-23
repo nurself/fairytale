@@ -251,12 +251,41 @@ class SystemErrorLogAdmin(admin.ModelAdmin):
     def get_readonly_fields(self, request, obj=None):
         return self.readonly_fields + ('level', 'message', 'timestamp')
 
+class BranchAdmin(admin.ModelAdmin):
+    list_display = ('name', 'address')
+    fieldsets = (
+        (None, {'fields': ('name', 'address')}),
+    )
+
+    def has_change_permission(self, request, obj=None):
+        return request.user.is_admin
+
+    def has_add_permission(self, request):
+        return request.user.is_admin
+
+    def has_delete_permission(self, request, obj=None):
+        return request.user.is_admin
+
+class SuitTypeAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    fieldsets = (
+        (None, {'fields': ('name', )}),
+    )
+
+    def has_change_permission(self, request, obj=None):
+        return request.user.is_admin
+
+    def has_add_permission(self, request):
+        return request.user.is_admin
+
+    def has_delete_permission(self, request, obj=None):
+        return request.user.is_admin
 
 admin.site.register(SystemErrorLog, SystemErrorLogAdmin)
 admin.site.register(MyUser, UserAdmin)
 admin.site.register(Suit, SuitAdmin)
-admin.site.register(Branch)
-admin.site.register(SuitType)
+admin.site.register(Branch, BranchAdmin)
+admin.site.register(SuitType, SuitTypeAdmin)
 admin.site.register(Agreement, AgreementAdmin)
 admin.site.register(People, PeopleAdmin)
 admin.site.unregister(Group)
