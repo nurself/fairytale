@@ -10,6 +10,14 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import Group
 from django import forms
+from django.contrib.admin.views.decorators import staff_member_required
+from django.conf.urls import patterns, url
+from django.shortcuts import render
+
+@staff_member_required
+def export(request):
+    suits = Suit.objects.order_by('name')
+    return render(request, 'world/suit_list.html', {'suits': suits})
 
 class TotalChangeList(ChangeList):
     fields_to_total = ['total_price','reserve_sum']
@@ -83,6 +91,13 @@ class SuitAdmin(admin.ModelAdmin):
     list_display = ['name', 'vendor_code', 'admin_image', 'year_issue', 'details', 'colour', 'rent_price', 'item_price', 'note', ]
     list_filter = [SuitListFilter,'type',]
     list_per_page = 10
+
+    def get_urls(self):
+        urls = super(SuitAdmin, self).get_urls()
+        my_urls = patterns("",
+            url(r"^export/$", export)
+        )
+        return my_urls + urls
 
     def render_change_form(self, request, context, *args, **kwargs):
         if request.user.is_admin:

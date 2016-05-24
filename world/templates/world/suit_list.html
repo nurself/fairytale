@@ -1,10 +1,37 @@
 ﻿    {% extends 'world/base.html' %}
 
     {% block content %}
+        <table style=" border-collapse: collapse;">
         {% for suit in suits %}
-            <div class="suit">
-   		<h1><a href="{% url 'suit_detail' pk=suit.pk %}">{{ suit.name }}</a></h1>               
-		 <p>{{ suit.details|linebreaks }}</p>
-            </div>
+            <tr>
+                <td style=" padding-top: .5em;
+    padding-bottom: .5em;">
+                    {% if not suit.picture %}
+                        <img src="" style="vertical-align:top" height="150" width="150"></td>
+                    {% else %}
+                        <img src="{{ suit.picture.url}}" style="vertical-align:top" height="150" width="150"></td>
+                    {% endif %}
+                <td style=" padding-top: .5em;
+    padding-bottom: .5em;"><ul>
+                    <h1>{{ suit.name }}</h1>
+                    <li>Артикул - <b> {{ suit.vendor_code }} </b></li>
+                    <li>Год выпуска - <b>{{ suit.year_issue }}</b></li>
+                    <li>Описание - <b>{{ suit.details }}</b></li>
+                    <li>Цвет - <b>{{ suit.colour }}</b></li>
+                    <li>Сумма проката - <b>{{ suit.item_price }}</b></li>
+                    <li>Стоимость имущества - <b>{{ suit.rent_price }}</b></li>
+                    {{ suit.note }}</ul>
+                </td>
+            <td>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>Дата</p>
+                <p>___________</p>
+                <p>Подпись</p>
+                <p>___________</p>
+            </td>
+            </tr>
         {% endfor %}
+        </table>
     {% endblock content %}
