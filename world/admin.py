@@ -16,8 +16,10 @@ from django.shortcuts import render
 
 @staff_member_required
 def export(request):
-    suits = Suit.objects.order_by('name')
-    return render(request, 'world/suit_list.html', {'suits': suits})
+    suits = Suit.objects.order_by('type')
+    types = SuitType.objects.all()
+    branches = Branch.objects.all()
+    return render(request, 'world/suit_list.html', {'suits': suits, 'types': types, 'branches': branches})
 
 class TotalChangeList(ChangeList):
     fields_to_total = ['total_price','reserve_sum']

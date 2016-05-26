@@ -1,9 +1,19 @@
-﻿    {% extends 'world/base.html' %}
+﻿<!--<script language='javascript'>
+   window.onload=window.print();
+</script>-->
+    {% extends 'world/base.html' %}
 
     {% block content %}
-        <table style=" border-collapse: collapse;">
-        {% for suit in suits %}
-            <tr>
+    {% for branch in branches %}
+        <h1>{{ branch.name }}</h1>
+        {% for type in types %}
+            {% if type.suit_set.first and type.suit_set.first.branch == branch%}
+                <h1 style="font-family: 'Lobster', cursive; font-size: 20pt;">{{ type.name }}</h1>
+            {% endif %}
+            <table style=" border-collapse: collapse;">
+            {% for suit in suits %}
+                {% if suit.type == type and suit.branch == branch %}
+                <tr>
                 <td style=" padding-top: .5em;
     padding-bottom: .5em;">
                     {% if not suit.picture %}
@@ -32,6 +42,10 @@
                 <p>___________</p>
             </td>
             </tr>
+                {% endif %}
+            {% endfor %}
+            </table>
         {% endfor %}
-        </table>
+    {% endfor %}
+        <button type="submit" class="save btn btn-default" onclick="javascript:window.print();">Печать</button>
     {% endblock content %}
