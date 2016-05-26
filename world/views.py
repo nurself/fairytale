@@ -3,8 +3,10 @@ from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 
 def suit_list(request):
-    suits = Suit.objects.order_by('name')
-    return render(request, 'world/suit_list.html', {'suits': suits})
+    suits = Suit.objects.order_by('type')
+    types = SuitType.objects.all()
+    branches = Branch.objects.all()
+    return render(request, 'world/suit_list.html', {'suits': suits, 'types': types, 'branches': branches})
 
 def suit_detail(request, pk):
     suit = get_object_or_404(Suit, pk=pk)

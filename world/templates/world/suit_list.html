@@ -30,7 +30,13 @@
                     <li>Цвет - <b>{{ suit.colour }}</b></li>
                     <li>Сумма проката - <b>{{ suit.item_price }}</b></li>
                     <li>Стоимость имущества - <b>{{ suit.rent_price }}</b></li>
-                    {{ suit.note }}</ul>
+
+                        {% for size in suit.suittosize_set.all %}
+                            <li>Размер - <b>    {{ size.size }} </b>
+                            Количество - <b>    {{ size.count }} </b></li>
+                        {% endfor %}
+
+                    <li>Примечание - {{ suit.note }}</ul>
                 </td>
             <td>
                 <p>&nbsp;</p>
